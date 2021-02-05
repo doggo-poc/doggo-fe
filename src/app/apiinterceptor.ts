@@ -10,6 +10,7 @@ export class APIInterceptor implements HttpInterceptor {
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         console.log(`${this.baseUrl}/${req.url}`);
         const apiReq = req.clone({ url: `${this.baseUrl}/${req.url}` });
+        //apiReq.headers.set("Access-Control-Allow-Origin", "*")
         return next.handle(apiReq);
     }
 }
